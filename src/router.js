@@ -4,6 +4,7 @@ import StoriesView from './views/StoriesView.vue'
 import ArticleView from './views/ArticleView.vue'
 import CommentView from './views/CommentView.vue'
 import UserView from './views/UserView.vue'
+import GridView from './views/GridView.vue'
 
 Vue.use(Router)
 
@@ -28,6 +29,7 @@ export default new Router({
     { path: '/article/:url(.*)?', component: ArticleView },
     { path: '/item/:id(\\d+)', component: CommentView },
     { path: '/user/:id', component: UserView },
+    { path: '/grid', component: GridView },
     { path: '/', redirect: '/top' }
   ]
 })

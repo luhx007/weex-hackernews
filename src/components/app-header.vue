@@ -19,6 +19,9 @@
       <div class="link" @click="jump('/job')">
         <text class="title">Job</text>
       </div>
+      <div class="link" @click="jump('/grid')">
+        <text class="title">Grid</text>
+      </div>
     </div>
   </div>
 </template>
