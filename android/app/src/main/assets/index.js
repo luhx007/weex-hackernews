@@ -4924,23 +4924,70 @@ var _appHeader2 = _interopRequireDefault(_appHeader);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var modal = weex.requireModule('modal'); //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 exports.default = {
   components: { AppHeader: _appHeader2.default },
-
   data: function data() {
     return {
-      items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+      list: [['NEWS', 'QUERY'], ['FAQ', 'PRODUCTS'], ['JOBS', 'QUIZ'], ['G', 'H'], ['I', 'j'], ['J', 'K'], ['L', 'M']]
     };
+  },
+  methods: {
+    showText: function showText(text) {
+      modal.toast({
+        message: 'You clicked ' + text,
+        duration: 0.5
+      });
+      console.log('You clicked ' + text);
+    }
   }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
+};
 
 /***/ }),
 /* 29 */
@@ -5165,21 +5212,37 @@ module.exports = {
 /***/ (function(module, exports) {
 
 module.exports = {
-  "grid-container": {
-    "display": "flex",
-    "flexDirection": "row",
-    "flexWrap": "wrap",
-    "justifyContent": "center",
-    "padding": 8,
-    "height": 90,
-    "overflow": "auto"
+  "grid-view": {
+    "height": 100
   },
-  "grid-item": {
-    "width": 45,
-    "height": 200,
-    "margin": 5,
-    "border": "1px solid #ccc",
-    "borderRadius": 5
+  "item": {
+    "flex": 1,
+    "justifyContent": "center",
+    "alignItems": "center",
+    "borderTopWidth": 1,
+    "borderTopStyle": "solid",
+    "borderTopColor": "#cccccc",
+    "borderRightWidth": 1,
+    "borderRightStyle": "solid",
+    "borderRightColor": "#cccccc",
+    "borderBottomWidth": 1,
+    "borderBottomStyle": "solid",
+    "borderBottomColor": "#cccccc",
+    "borderLeftWidth": 1,
+    "borderLeftStyle": "solid",
+    "borderLeftColor": "#cccccc",
+    "borderTopLeftRadius": 8,
+    "borderTopRightRadius": 8,
+    "borderBottomLeftRadius": 8,
+    "borderBottomRightRadius": 8,
+    "marginTop": 5,
+    "marginRight": 5,
+    "marginBottom": 5,
+    "marginLeft": 5
+  },
+  "row": {
+    "flexDirection": "row",
+    "height": 280
   }
 }
 
@@ -5482,14 +5545,30 @@ module.exports.render._withStripped = true
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: ["grid-view"]
-  }, [_c('app-header'), _c('div', {
-    staticClass: ["grid-container"]
-  }, _vm._l((_vm.items), function(item) {
-    return _c('div', {
-      key: item,
-      staticClass: ["grid-item"]
-    })
+    staticClass: ["grid-view"],
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [_c('app-header'), _c('list', _vm._l((_vm.list), function(v, i) {
+    return _c('cell', {
+      key: i,
+      staticClass: ["row"],
+      appendAsTree: true,
+      attrs: {
+        "append": "tree"
+      }
+    }, _vm._l((v), function(text, k) {
+      return _c('div', {
+        key: k,
+        staticClass: ["item"],
+        on: {
+          "click": function($event) {
+            _vm.showText(text)
+          }
+        }
+      }, [_c('text', [_vm._v(_vm._s(text))])])
+    }))
   }))], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true

@@ -30,6 +30,6 @@ export default new Router({
     { path: '/item/:id(\\d+)', component: CommentView },
     { path: '/user/:id', component: UserView },
     { path: '/grid', component: GridView },
-    { path: '/', redirect: '/top' }
+    { path: '/', redirect: '/grid' }
   ]
 })
